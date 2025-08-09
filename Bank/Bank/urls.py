@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('Kross.urls')),  # Include the Kross app URLs
+    path('accounts/', include('Kross.urls')),
+    path('catalogue/', include('Catalogue.urls')),
 ]

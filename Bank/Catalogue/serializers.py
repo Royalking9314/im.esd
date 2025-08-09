@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from Katyy.models import User
+from Catalogue.models import User
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
