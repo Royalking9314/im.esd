@@ -1,282 +1,310 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Eshaan Singh Deo — Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hello! I'm Eshaan Singh Deo — Portfolio</title>
 
-  <!-- CSS is now embedded directly in the HTML file -->
-  <style>
-    /* Importing a modern and professional font */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    <!-- CSS is now embedded directly in the HTML file -->
+    <style>
+        /* Importing a modern and professional font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        
+        /* Basic styles for the entire page */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a2e; /* Dark navy background */
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
 
-    /* Basic styles for the entire page */
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      /* New aesthetic background with a mixed pattern */
-      background-color: #141414;
-      background-image: linear-gradient(45deg, #1f1f1f 25%, transparent 25%, transparent 75%, #1f1f1f 75%, #1f1f1f), 
-                        linear-gradient(45deg, #1f1f1f 25%, transparent 25%, transparent 75%, #1f1f1f 75%, #1f1f1f);
-      background-size: 40px 40px;
-      background-position: 0 0, 20px 20px;
-      animation: movePattern 20s linear infinite;
-      color: #e0e0e0; /* Changed font color for better readability on dark background */
-      line-height: 1.6;
-    }
+        /* Fixed Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff5722;
+        }
+        .navbar-links a {
+            color: #c0c0c0;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .navbar-links a:hover {
+            color: #ff5722;
+        }
+        .resume-btn {
+            background: #ff5722;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .resume-btn:hover {
+            background: #e64a19;
+        }
 
-    /* Keyframes for the background pattern animation */
-    @keyframes movePattern {
-      from { background-position: 0 0, 20px 20px; }
-      to { background-position: 40px 40px, 60px 60px; }
-    }
+        /* Main content container */
+        main {
+            padding: 2rem;
+            max-width: 1100px;
+            margin: auto;
+            padding-top: 6rem;
+        }
 
-    /* Hero section styling */
-    .hero {
-      text-align: center;
-      padding: 5rem 1rem;
-      background: rgba(30, 30, 30, 0.5); /* Semi-transparent background for contrast */
-      backdrop-filter: blur(10px);
-      color: white;
-    }
+        /* Hero section styling */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 5rem 1rem;
+            gap: 2rem;
+            background: #1f1f38;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        @media (min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                text-align: left;
+                padding: 4rem;
+            }
+        }
 
-    .avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      border: 5px solid #ff5722; /* New accent color */
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease-in-out;
-      margin-bottom: 1rem;
-    }
+        .hero-content {
+            flex: 1;
+        }
+        .avatar-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            background: #2b2b48;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .avatar {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .big-name {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .tagline {
+            font-size: 1.4rem;
+            color: #c0c0c0;
+            margin-bottom: 2rem;
+        }
+        .hero p {
+            margin-bottom: 1rem;
+        }
 
-    .avatar:hover {
-      transform: scale(1.05);
-    }
+        /* General section styling */
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #ff5722;
+            border-bottom: 3px solid #ff5722;
+            display: inline-block;
+            padding-bottom: 0.25rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
 
-    .big-name {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin: 0;
-      color: white;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    }
+        /* Skills list styling */
+        .skills-list {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .skills-list li {
+            background-color: #3b3b5c;
+            color: #e0e0e0;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
 
-    .tagline {
-      font-size: 1.4rem;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 2rem;
-    }
+        /* Project cards */
+        .project-card {
+            background: #2b2b48;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ff5722;
+            margin-bottom: 0.5rem;
+        }
+        .project-card p {
+            color: #c0c0c0;
+        }
 
-    .github-btn {
-      background: #ff5722; /* New accent color for button */
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+        /* Contact section links */
+        a {
+            color: #ff5722;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #e64a19;
+            text-decoration: underline;
+        }
+        
+        .social-icons a {
+            font-size: 2rem;
+            margin: 0 1rem;
+            color: #ff5722;
+        }
 
-    .github-btn:hover {
-      background: #e64a19;
-      transform: translateY(-2px);
-    }
-
-    /* Main content container */
-    main {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    /* Section headings */
-    h2 {
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: #ff5722; /* New accent color */
-      border-bottom: 3px solid #ff5722;
-      display: inline-block;
-      padding-bottom: 0.25rem;
-      margin-top: 3rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Skills list styling */
-    .skills-list {
-      list-style-type: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .skills-list li {
-      background-color: #ff5722; /* New accent color */
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-    }
-
-    /* Project cards */
-    .project-card {
-      background: rgba(43, 43, 43, 0.7); /* Semi-transparent card background for contrast */
-      backdrop-filter: blur(5px);
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .project-card h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #ff5722; /* New accent color */
-      margin-bottom: 0.5rem;
-    }
-
-    .project-card p {
-      color: #c0c0c0; /* Changed font color for better readability on dark background */
-    }
-
-    /* Contact section links */
-    a {
-      color: #ff5722; /* New accent color */
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: #e64a19; /* Changed hover color for better readability */
-      text-decoration: underline;
-    }
-    
-    /* New styling for the social media icons */
-    .social-icons a {
-        font-size: 2rem;
-        margin: 0 1rem;
-        color: #ff5722; /* New accent color */
-    }
-
-    /* Footer styling */
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      color: #999;
-      border-top: 1px solid #444; /* Changed border color for contrast */
-      margin-top: 3rem;
-    }
-
-    /* Styling for the heart icon in the footer */
-    .heart {
-      color: red;
-    }
-  </style>
-
-  <!-- Google Fonts for a more professional look -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+            color: #999;
+            border-top: 1px solid #444;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero">
-    <!-- Corrected image path -->
-    <img class="avatar" src="https://placehold.co/140x140/ff5722/ffffff?text=ESD" alt="Eshaan Singh Deo">
-    <h1 class="big-name">Eshaan Singh Deo</h1>
-    <p class="tagline">B.Tech CSE Student • Web Developer • Problem Solver</p>
-    <button class="github-btn" onclick="window.open('https://github.com/Royalking9314/im.esd.git','_blank')">
-      <span class="icon">🌟</span> View My GitHub
-    </button>
-  </header>
+    <!-- Fixed Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">ESD</div>
+        <div class="navbar-links">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#" class="resume-btn">Resume</a>
+    </nav>
 
-  <main>
-    <!-- About Me Section -->
-    <section class="about">
-      <h2>About Me</h2>
-      <p>
-        I am a B.Tech 2nd-year student specializing in Computer Science with a keen interest in Web Development, problem-solving, and emerging technologies. I am passionate about building practical projects, enhancing skills, and applying theoretical knowledge to real-world applications. Eager to learn, adapt, and contribute to innovative solutions, along with an interest in Cloud Computing.
-      </p>
-    </section>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1 class="big-name">Eshaan Singh Deo</h1>
+                <p class="tagline">B.Tech CSE Student • Web Developer • Problem Solver</p>
+                <p>I am a B.Tech 2nd-year student specializing in Computer Science with a keen interest in Web Development, problem-solving, and emerging technologies. I am passionate about building practical projects, enhancing skills, and applying theoretical knowledge to real-world applications. Eager to learn, adapt, and contribute to innovative solutions, along with an interest in Cloud Computing.</p>
+            </div>
+            <div class="avatar-container">
+                <img class="avatar" src="https://placehold.co/250x300/ff5722/ffffff?text=ESD" alt="Eshaan Singh Deo">
+            </div>
+        </section>
 
-    <!-- Education Section -->
-    <section class="education">
-      <h2>Education</h2>
-      <div class="project-card">
-        <h3>B.Tech in Computer Science, AKTU</h3>
-        <p><strong>2024 - Present</strong></p>
-      </div>
-      <div class="project-card">
-        <h3>Intermediate, CBSE</h3>
-        <p><strong>2022 - 2024</strong></p>
-      </div>
-      <div class="project-card">
-        <h3>High School, CBSE</h3>
-        <p><strong>2020 - 2022</strong></p>
-      </div>
-    </section>
+        <!-- About Me Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am a B.Tech 2nd-year student specializing in Computer Science with a keen interest in Web Development, problem-solving, and emerging technologies. I am passionate about building practical projects, enhancing skills, and applying theoretical knowledge to real-world applications. Eager to learn, adapt, and contribute to innovative solutions, along with an interest in Cloud Computing.
+            </p>
+        </section>
 
-    <!-- Skills Section -->
-    <section class="skills">
-      <h2>Skills</h2>
-      <ul class="skills-list">
-        <li>HTML</li>
-        <li>Python</li>
-        <li>CSS Basics</li>
-        <li>C Basics</li>
-      </ul>
-    </section>
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li>HTML</li>
+                <li>Python</li>
+                <li>CSS Basics</li>
+                <li>C Basics</li>
+            </ul>
+        </section>
 
-    <!-- Projects Section -->
-    <section class="projects">
-      <h2>Projects</h2>
-      <div class="project-card">
-        <h3>💻 Personal Portfolio Website</h3>
-        <p>Designed and developed a responsive portfolio website using HTML and CSS. Hosted on GitHub Pages.</p>
-        <a href="https://github.com/Royalking9314/im.esd.git" class="github-btn" style="background-color: #ff5722; color: white;">View Project</a>
-      </div>
-    </section>
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3>💻 Personal Portfolio Website</h3>
+                <p>Designed and developed a responsive portfolio website using HTML and CSS. Hosted on GitHub Pages.</p>
+                <a href="https://github.com/Royalking9314/im.esd.git" class="github-btn" style="background-color: #ff5722; color: white;">View Project</a>
+            </div>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="contact" style="text-align: center;">
-      <h2>Get In Touch</h2>
-      <p style="color: #c0c0c0; max-width: 600px; margin: 0 auto 2rem;">
-        I'm always open to new opportunities and collaborations. Feel free to connect with me!
-      </p>
-      <p style="font-size: 1.25rem; font-weight: 600; margin-bottom: 2rem;">
-        <a href="mailto:eshaansinghdeo@gmail.com">eshaansinghdeo@gmail.com</a>
-      </p>
-      <div class="social-icons">
-        <a href="www.linkedin.com/in/eshaan-singh-deo-ba669433a" target="_blank" title="LinkedIn">💼</a>
-        <a href="https://github.com/Royalking9314/im.esd.git" target="_blank" title="GitHub">🌟</a>
-      </div>
-    </section>
-  </main>
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+            <div class="project-card">
+                <h3>B.Tech in Computer Science, AKTU</h3>
+                <p><strong>2024 - Present</strong></p>
+            </div>
+            <div class="project-card">
+                <h3>Intermediate, CBSE</h3>
+                <p><strong>2022 - 2024</strong></p>
+            </div>
+            <div class="project-card">
+                <h3>High School, CBSE</h3>
+                <p><strong>2020 - 2022</strong></p>
+            </div>
+        </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© <span id="year"></span> Eshaan Singh Deo | All Rights Reserved</p>
-    <p>Made with <span class="heart">❤️</span></p>
-  </footer>
+        <!-- Contact Section -->
+        <section id="contact" style="text-align: center;">
+            <h2>Get In Touch</h2>
+            <p style="color: #c0c0c0; max-width: 600px; margin: 0 auto 2rem;">
+                I'm always open to new opportunities and collaborations. Feel free to connect with me!
+            </p>
+            <p style="font-size: 1.25rem; font-weight: 600; margin-bottom: 2rem;">
+                <a href="mailto:eshaansinghdeo@gmail.com">eshaansinghdeo@gmail.com</a>
+            </p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/eshaan-singh-deo-ba669433a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" title="LinkedIn">💼</a>
+                <a href="https://github.com/Royalking9314/im.esd.git" target="_blank" title="GitHub">🌟</a>
+            </div>
+        </section>
+    </main>
 
-  <script>
-    // JavaScript to dynamically set the current year in the footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <!-- Footer -->
+    <footer>
+        <p>© <span id="year"></span> Eshaan Singh Deo | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // JavaScript to dynamically set the current year in the footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
