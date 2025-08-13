@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Eshaan Singh Deo — Portfolio</title>
 
-    <!-- CSS is now embedded directly in the HTML file -->
     <style>
         /* Importing a new, modern font: Inter */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -234,12 +233,20 @@
             border-top: 1px solid #444;
             margin-top: 3rem;
         }
+        .github-btn {
+            background-color: transparent; 
+            color: #00BCD4; 
+            border: 2px solid #00BCD4; 
+            padding: 0.5rem 1.5rem; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            transition: background-color 0.3s ease;
+        }
     </style>
 </head>
 <body>
     <canvas id="threejs-background"></canvas>
 
-    <!-- Fixed Navigation Bar -->
     <nav class="navbar">
         <div class="logo">ESD</div>
         <div class="navbar-links">
@@ -253,7 +260,6 @@
     </nav>
 
     <main>
-        <!-- Hero Section -->
         <section id="hero" class="hero">
             <div class="hero-content">
                 <h1 class="big-name" style="color: #00BCD4;">Greetings, I'm Eshaan Singh Deo</h1>
@@ -261,11 +267,10 @@
                 <p>I am a B.Tech 2nd-year student specializing in Computer Science with a keen interest in Web Development, problem-solving, and emerging technologies. I am passionate about building practical projects, enhancing skills, and applying theoretical knowledge to real-world applications. Eager to learn, adapt, and contribute to innovative solutions, along with an interest in Cloud Computing.</p>
             </div>
             <div class="avatar-container">
-                <img class="avatar" src="im.esd/profile.jpg" alt="Eshaan Singh Deo">
+                <img class="avatar" src="images/profile.jpg" alt="Eshaan Singh Deo">
             </div>
         </section>
 
-        <!-- About Me Section -->
         <section id="about">
             <h2>About Me</h2>
             <p>
@@ -273,7 +278,6 @@
             </p>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills">
             <h2>Skills</h2>
             <ul class="skills-list">
@@ -284,17 +288,15 @@
             </ul>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects">
             <h2>Projects</h2>
             <div class="project-card">
                 <h3>💻 Personal Portfolio Website</h3>
                 <p>Designed and developed a responsive portfolio website using HTML and CSS. Hosted on GitHub Pages.</p>
-                <a href="https://royalking9314.github.io/im.esd/" class="github-btn" style="background-color: transparent; color: #00BCD4; border: 2px solid #00BCD4;">View Project</a>
+                <a href="https://roylaking9314.github.io/im.esd/" class="github-btn">View Project</a>
             </div>
         </section>
 
-        <!-- Education Section -->
         <section id="education">
             <h2>Education</h2>
             <div class="project-card">
@@ -311,7 +313,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" style="text-align: center;">
             <h2>Get In Touch</h2>
             <p style="color: #c0c0c0; max-width: 600px; margin: 0 auto 2rem;">
@@ -322,12 +323,11 @@
             </p>
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/eshaan-singh-deo-ba669433a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" title="LinkedIn">💼</a>
-                <a href="https://github.com/Royalking9314/im.esd.git" target="_blank" title="GitHub">🌟</a>
+                <a href="https://github.com/Royalking9314/im.esd/" target="_blank" title="GitHub">🌟</a>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>© <span id="year"></span> Eshaan Singh Deo | All Rights Reserved</p>
     </footer>
