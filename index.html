@@ -12,12 +12,25 @@
         
         /* Basic styles for the entire page */
         body {
-            font-family: 'Inter', sans-serif; /* Changed font family */
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #1a1a2e; /* Dark navy background */
             color: #e0e0e0;
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }
+        
+        /* 3D Background Canvas */
+        #threejs-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
         }
 
         /* Fixed Navigation Bar */
@@ -36,14 +49,14 @@
         }
         .navbar .logo {
             font-size: 1.5rem;
-            font-weight: 600; /* Lowered boldness by 1 mark */
+            font-weight: 600;
             color: #ff5722;
         }
         .navbar-links a {
             color: #c0c0c0;
             text-decoration: none;
             margin-left: 2rem;
-            font-weight: 500; /* Lowered boldness by 1 mark */
+            font-weight: 500;
             transition: color 0.3s ease;
         }
         .navbar-links a:hover {
@@ -55,7 +68,7 @@
             border: none;
             padding: 0.5rem 1.5rem;
             font-size: 1rem;
-            font-weight: 500; /* Lowered boldness by 1 mark */
+            font-weight: 500;
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -70,6 +83,8 @@
             max-width: 1100px;
             margin: auto;
             padding-top: 6rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* Hero section styling */
@@ -83,6 +98,9 @@
             background: #1f1f38;
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            /* New pattern for the first box */
+            background-image: radial-gradient(#3b3b5c 1px, transparent 1px);
+            background-size: 15px 15px;
         }
         @media (min-width: 768px) {
             .hero {
@@ -104,6 +122,7 @@
             background: #2b2b48;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-image: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 70%);
         }
         .avatar {
             width: 100%;
@@ -115,16 +134,16 @@
         
         .big-name {
             font-size: 3.5rem;
-            font-weight: 600; /* Lowered boldness by 1 mark */
+            font-weight: 600;
             margin: 0;
-            color: white;
+            color: #00BCD4; /* Changed color to vibrant teal */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
         .tagline {
             font-size: 1.4rem;
             color: #c0c0c0;
             margin-bottom: 2rem;
-            font-weight: 500; /* Lowered boldness by 1 mark */
+            font-weight: 500;
         }
         .hero p {
             margin-bottom: 1rem;
@@ -133,7 +152,7 @@
         /* General section styling */
         h2 {
             font-size: 2.2rem;
-            font-weight: 500; /* Lowered boldness by 1 mark */
+            font-weight: 500;
             color: #ff5722;
             border-bottom: 3px solid #ff5722;
             display: inline-block;
@@ -155,25 +174,33 @@
             color: #e0e0e0;
             padding: 0.5rem 1rem;
             border-radius: 20px;
-            font-weight: 500; /* Lowered boldness by 1 mark */
+            font-weight: 500;
         }
 
-        /* Project cards */
+        /* Project cards - Added 3D transform effect on hover */
         .project-card {
             background: #2b2b48;
             padding: 1.5rem;
             margin: 1rem 0;
             border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            transform-style: preserve-3d;
+            /* Added new diagonal line pattern */
+            background-image:
+                linear-gradient(45deg, rgba(255, 255, 255, 0.05) 5%, transparent 5%),
+                linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 5%, transparent 5%);
+            background-size: 15px 15px;
+            background-position: 0 0;
         }
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
         .project-card h3 {
             font-size: 1.5rem;
-            font-weight: 500; /* Lowered boldness by 1 mark */
+            font-weight: 500;
             color: #ff5722;
             margin-bottom: 0.5rem;
         }
@@ -210,6 +237,8 @@
     </style>
 </head>
 <body>
+    <canvas id="threejs-background"></canvas>
+
     <!-- Fixed Navigation Bar -->
     <nav class="navbar">
         <div class="logo">ESD</div>
@@ -227,7 +256,7 @@
         <!-- Hero Section -->
         <section id="hero" class="hero">
             <div class="hero-content">
-                <h1 class="big-name">Greetings, I'm Eshaan Singh Deo.</h1>
+                <h1 class="big-name" style="color: #00BCD4;">Greetings, I'm Eshaan Singh Deo</h1>
                 <p class="tagline">B.Tech CSE Student • Web Developer • Problem Solver</p>
                 <p>I am a B.Tech 2nd-year student specializing in Computer Science with a keen interest in Web Development, problem-solving, and emerging technologies. I am passionate about building practical projects, enhancing skills, and applying theoretical knowledge to real-world applications. Eager to learn, adapt, and contribute to innovative solutions, along with an interest in Cloud Computing.</p>
             </div>
@@ -261,7 +290,7 @@
             <div class="project-card">
                 <h3>💻 Personal Portfolio Website</h3>
                 <p>Designed and developed a responsive portfolio website using HTML and CSS. Hosted on GitHub Pages.</p>
-                <a href="https://github.com/Royalking9314/im.esd.git" class="github-btn" style="background-color: #ff5722; color: white;">View Project</a>
+                <a href="https://github.com/Royalking9314/im.esd.git" class="github-btn" style="background-color: transparent; color: #00BCD4; border: 2px solid #00BCD4;">View Project</a>
             </div>
         </section>
 
@@ -303,7 +332,90 @@
         <p>© <span id="year"></span> Eshaan Singh Deo | All Rights Reserved</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('threejs-background');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            // Create a low-poly geometric landscape
+            const geometry = new THREE.PlaneGeometry(100, 100, 50, 50);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0x3b3b5c,
+                shininess: 20,
+                flatShading: true,
+                transparent: true,
+                opacity: 0.8
+            });
+
+            const plane = new THREE.Mesh(geometry, material);
+            scene.add(plane);
+
+            // Distort the geometry for the landscape effect
+            const positions = geometry.attributes.position.array;
+            for (let i = 0; i < positions.length; i += 3) {
+                positions[i + 2] = (Math.random() - 0.5) * 5; // Distort the z-axis
+            }
+            geometry.attributes.position.needsUpdate = true;
+
+            plane.rotation.x = -Math.PI / 2; // Orient the plane horizontally
+            plane.position.y = -5; // Place it below the camera
+
+            // Add lights to make the 3D shapes visible
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+            scene.add(ambientLight);
+            
+            const pointLight = new THREE.PointLight(0xff5722, 1, 100);
+            pointLight.position.set(0, 10, 0);
+            scene.add(pointLight);
+
+            camera.position.set(0, 2, 10);
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            // Handle mouse movement for interactive camera control
+            let mouseX = 0, mouseY = 0;
+            window.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+            });
+            
+            const animate = () => {
+                requestAnimationFrame(animate);
+
+                // Animate camera position for a "flying" motion
+                const time = Date.now() * 0.001;
+                camera.position.x = Math.cos(time * 0.1) * 2;
+                camera.position.z = Math.sin(time * 0.1) * 2 + 10;
+                camera.position.y = Math.sin(time * 0.5) * 0.5 + 2;
+
+                // Move the plane along with the camera for infinite effect
+                plane.position.x = camera.position.x;
+                plane.position.z = camera.position.z;
+
+                // Update the point light position
+                pointLight.position.x = camera.position.x + 5;
+                pointLight.position.z = camera.position.z - 5;
+                
+                // Add interactive camera control with mouse
+                camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+                camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
+                camera.lookAt(new THREE.Vector3(camera.position.x, 0, camera.position.z - 10));
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+        });
+        
         // JavaScript to dynamically set the current year in the footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
